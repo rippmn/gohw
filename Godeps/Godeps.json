@@ -1,5 +1,9 @@
 {
-	"ImportPath": "gohw",
-	"GoVersion": "go1.4.1",
-	"Deps": []
+	"ImportPath": "github.com/rippmn/gohw",
+	"GoVersion": "go1.4",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+	]
 }
