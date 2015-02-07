@@ -7,8 +7,12 @@ import (
 	"log"
 )
 
+	var logger  = log.New(os.Stdout, log.Prefix(), log.Flags())
+
 func handler(w http.ResponseWriter, r *http.Request){
-	log.Printf("Request received at %s", r.URL.Path[1:])
+	
+
+	logger.Printf("Request received at %s", r.URL.Path[1:])
 	index := os.Getenv("CF_INSTANCE_INDEX")
 	if index != ""{
 		fmt.Fprintf(w, "App Instance Index:%s\n", index)
@@ -20,7 +24,7 @@ func handler(w http.ResponseWriter, r *http.Request){
 }
 
 func exitNow(w http.ResponseWriter, r *http.Request){
-	log.Println("exit called")
+	logger.Println("exit called")
 	os.Exit(14)
 }
 
@@ -32,8 +36,8 @@ func main(){
 		port_num = "8080"
 	}
 	port := ":" + port_num
-	log.Printf("Listening on port %s\n", port)
-	log.Println("****Cheat commandos, ROCK ROCK ON!!!!") 
+	logger.Printf("Listening on port %s\n", port)
+	logger.Println("****Cheat commandos, ROCK ROCK ON!!!!") 
 	err := http.ListenAndServe(port, nil)
 
 	if err != nil {
