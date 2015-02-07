@@ -9,7 +9,7 @@ import (
 
 func handler(w http.ResponseWriter, r *http.Request){
 	log.Printf("Request received at %s", r.URL.Path[1:])
-	index := os.Getenv("INDEX")
+	index := os.Getenv("CF_INSTANCE_INDEX")
 	if index != ""{
 		fmt.Fprintf(w, "App Instance Index:%s\n", index)
 	}else
