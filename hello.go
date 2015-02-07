@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"log"
 )
 
 func handler(w http.ResponseWriter, r *http.Request){
@@ -14,10 +15,16 @@ func handler(w http.ResponseWriter, r *http.Request){
 
 func main(){
 	http.HandleFunc("/", handler)
-	port := os.Getenv("PORT")
-	if port == ""{
-		port=":8080"
+	port_num := os.Getenv("PORT")
+	if port_num == ""{
+		port_num = "8080"
 	}
+	port := ":" + port_num
 	fmt.Printf("Listening on port %s\n", port)
-	http.ListenAndServe(port, nil)
+	fmt.Printf("****Cheat commandos, ROCK ROCK ON!!!!") 
+	err := http.ListenAndServe(port, nil)
+
+	if err != nil {
+		log.Fatal("ListenAndServe:", err)
+}
 }
