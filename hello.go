@@ -8,12 +8,13 @@ import (
 )
 
 func handler(w http.ResponseWriter, r *http.Request){
+	fmt.Fprintf(w, "App Instance Index:%s", os.Getenv("INDEX"))
 	fmt.Fprintf(w, "Hello, request received at %s", r.URL.Path[1:])
 }
 
 func exitNow(w http.ResponseWriter, r *http.Request){
 	log.Println("exit called")
-	os.Exit(-1)
+	os.Exit(14)
 }
 
 func main(){
