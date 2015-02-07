@@ -8,6 +8,7 @@ import (
 )
 
 func handler(w http.ResponseWriter, r *http.Request){
+	log.Printf("Request received at %s", r.URL.Path[1:])
 	index := os.Getenv("INDEX")
 	if index != ""{
 		fmt.Fprintf(w, "App Instance Index:%s\n", index)
@@ -16,7 +17,6 @@ func handler(w http.ResponseWriter, r *http.Request){
 		fmt.Fprintf(w, "No App Instance available\n")
 	}		
 	
-	fmt.Fprintf(w, "Request received at %s\n", r.URL.Path[1:])
 }
 
 func exitNow(w http.ResponseWriter, r *http.Request){
